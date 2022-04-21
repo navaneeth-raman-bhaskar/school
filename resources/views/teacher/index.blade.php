@@ -12,7 +12,7 @@
             <th>Actions</th>
         </tr>
         </thead>
-        <tbody class="students">
+        <tbody class="teachers">
         @foreach($teachers as $teacher)
             <tr>
                 <td>{{$loop->iteration}}</td>
@@ -33,3 +33,6 @@
         </div>
     </div>
 @endsection
+@push('js')
+    <script src="{{asset('js/pages/teacher/teacher.js')}}"></script>
+@endpush

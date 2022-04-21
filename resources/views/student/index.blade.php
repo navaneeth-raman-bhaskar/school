@@ -37,3 +37,6 @@
         </div>
     </div>
 @endsection
+@push('js')
+    <script src="{{asset('js/pages/student/student.js')}}"></script>
+@endpush

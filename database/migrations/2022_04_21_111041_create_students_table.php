@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('name', 35);
             $table->unsignedSmallInteger('age');
             $table->unsignedTinyInteger('gender')->comment('1:Male;2:Female');
-            $table->foreignIdFor(Teacher::class);
+            $table->foreignIdFor(Teacher::class)->constrained();
             $table->timestamps();
         });
     }
