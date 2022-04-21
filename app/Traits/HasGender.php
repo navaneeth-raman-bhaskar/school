@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 
 trait HasGender
 {
-   /* public function gender(): ?string
+    public function getGender(): ?string
     {
         return Gender::name($this->gender);
     }
@@ -18,7 +18,7 @@ trait HasGender
     public function genderName(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->gender()
+            get: fn() => $this->getGender()
         )->shouldCache();
-    }*/
+    }
 }
