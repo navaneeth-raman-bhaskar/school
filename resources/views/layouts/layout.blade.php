@@ -12,6 +12,7 @@
 </head>
 <body>
 <div class="container">
+    <h3><a href="{{route('home')}}">Home</a></h3>
     @yield('content')
 </div>
 </body>

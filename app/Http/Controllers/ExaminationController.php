@@ -16,7 +16,10 @@ class ExaminationController extends Controller
 
     public function index()
     {
-        return view('examination.index');
+        $examinations = Examination::select('id', 'mark', 'student_id', 'subject_id', 'term_id')
+            ->with('student:id,name', 'subject:id,name', 'term:id,name')
+            ->paginate();
+        return view('examination.index')->with(compact('examinations'));
     }
 
 
