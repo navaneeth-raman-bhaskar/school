@@ -2,15 +2,18 @@
 
 namespace App\View\Components;
 
+use App\Services\Gender;
 use Illuminate\View\Component;
 
-class Gender extends Component
+class GenderRadio extends Component
 {
     public array $genders;
+    public ?int $current;
 
-    public function __construct(public $model,public string $name = "gender")
+    public function __construct($model, public string $name = "gender")
     {
-        $this->genders = \App\Services\Gender::all();
+        $this->genders = Gender::all();
+        $this->current = $model->gender;
     }
 
     /**
@@ -20,6 +23,6 @@ class Gender extends Component
      */
     public function render()
     {
-        return view('components.gender');
+        return view('components.gender-radio');
     }
 }

@@ -13,6 +13,13 @@ class Student extends Model
     use HasFactory;
     use HasGender;
 
+    protected $fillable = [
+        'name',
+        'age',
+        'gender',
+        'teacher_id'
+    ];
+
     public function teacher(): BelongsTo
     {
         return $this->belongsTo(Teacher::class);
