@@ -21,9 +21,9 @@ return new class extends Migration
             $table->foreignIdFor(Student::class)->constrained();
             $table->foreignIdFor(Subject::class)->constrained();
             $table->foreignIdFor(Term::class)->constrained();
-            $table->decimal('mark',3,2);
-            $table->decimal('min_mark',3,2);
-            $table->decimal('max_mark',3,2);
+            $table->unsignedDecimal('mark',5,2);
+            $table->unsignedDecimal('min_mark',5,2);
+            $table->unsignedDecimal('max_mark',5,2);
             $table->timestamps();
         });
     }
