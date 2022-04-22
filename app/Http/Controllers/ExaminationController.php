@@ -35,15 +35,7 @@ class ExaminationController extends Controller
     public function store(StoreExaminationRequest $request)
     {
         $examination = new Examination();
-        $examination->fill($request->only([
-            'student_id',
-            'subject_id',
-            'term_id',
-            'mark',
-            'min_mark',
-            'max_mark',
-        ]));
-        $examination->save();
+        $examination->store($request);
         return redirect()->route('examinations.index');
 
     }
@@ -64,15 +56,7 @@ class ExaminationController extends Controller
 
     public function update(UpdateExaminationRequest $request, Examination $examination)
     {
-        $examination->fill($request->only([
-            'student_id',
-            'subject_id',
-            'term_id',
-            'mark',
-            'min_mark',
-            'max_mark',
-        ]));
-        $examination->save();
+        $examination->store($request);
         return redirect()->route('examinations.index');
     }
 

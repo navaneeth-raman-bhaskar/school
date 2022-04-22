@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\HasGender;
+use App\Traits\HasStore;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +11,7 @@ class Teacher extends Model
 {
     use HasFactory;
     use HasGender;
+    use HasStore;
 
     protected $fillable = [
         'name',
@@ -17,6 +19,6 @@ class Teacher extends Model
     ];
 
     protected $casts = [
-        'gender'=>'bool'
+        'gender'=>'int'
     ];
 }

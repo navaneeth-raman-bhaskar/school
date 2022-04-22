@@ -24,8 +24,7 @@ class TermController extends Controller
     public function store(StoreTermRequest $request)
     {
         $term = new Term();
-        $term->fill($request->only('name'));
-        $term->save();
+        $term->store($request);
         return redirect()->route('terms.index');
     }
 
@@ -44,8 +43,7 @@ class TermController extends Controller
 
     public function update(UpdateTermRequest $request, Term $term)
     {
-        $term->fill($request->only('name'));
-        $term->save();
+        $term->store($request);
         return redirect()->route('terms.index');
     }
 

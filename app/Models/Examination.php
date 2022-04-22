@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\HasStore;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class Examination extends Pivot
 {
+    use HasStore;
+
     protected $fillable = [
         'student_id',
         'subject_id',

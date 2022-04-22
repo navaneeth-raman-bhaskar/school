@@ -29,8 +29,7 @@ class StudentController extends Controller
     public function store(StoreStudentRequest $request)
     {
         $student = new Student();
-        $student->fill($request->only('name', 'age', 'teacher_id', 'gender'));
-        $student->save();
+        $student->store($request);
         return redirect()->route('students.index');
     }
 
@@ -50,8 +49,7 @@ class StudentController extends Controller
 
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        $student->fill($request->only('name', 'age', 'teacher_id', 'gender'));
-        $student->save();
+        $student->store($request);
         return redirect()->route('students.index');
     }
 

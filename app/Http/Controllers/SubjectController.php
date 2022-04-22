@@ -25,8 +25,7 @@ class SubjectController extends Controller
     public function store(StoreSubjectRequest $request)
     {
         $subject = new Subject();
-        $subject->fill($request->only('name'));
-        $subject->save();
+        $subject->store($request);
         return redirect()->route('subjects.index');
     }
 
@@ -45,8 +44,7 @@ class SubjectController extends Controller
 
     public function update(UpdateSubjectRequest $request, Subject $subject)
     {
-        $subject->fill($request->only('name'));
-        $subject->save();
+        $subject->store($request);
         return redirect()->route('subjects.index');
     }
 

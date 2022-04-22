@@ -26,8 +26,7 @@ class TeacherController extends Controller
     public function store(StoreTeacherRequest $request)
     {
         $teacher = new Teacher();
-        $teacher->fill($request->only('name', 'gender'));
-        $teacher->save();
+        $teacher->store($request);
         return redirect()->route('teachers.index');
     }
 
@@ -47,8 +46,7 @@ class TeacherController extends Controller
 
     public function update(UpdateTeacherRequest $request, Teacher $teacher)
     {
-        $teacher->fill($request->only('name', 'gender'));
-        $teacher->save();
+        $teacher->store($request);
         return redirect()->route('teachers.index');
     }
 
