@@ -8,12 +8,12 @@ use Illuminate\View\Component;
 class GenderRadio extends Component
 {
     public array $genders;
-    public ?int $current;
+    public ?int $checked;
 
     public function __construct($model, public string $name = "gender")
     {
         $this->genders = Gender::all();
-        $this->current = $model->gender;
+        $this->checked = old($name, $model->gender) ;
     }
 
     /**

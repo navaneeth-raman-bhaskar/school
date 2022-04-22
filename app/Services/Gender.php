@@ -15,7 +15,7 @@ class Gender
         self::FEMALE => 'Female',
     ];
 
-    public static function name($key): ?string
+    public static function name(?int $key): ?string
     {
         return self::GENDERS[$key] ?? null;
     }

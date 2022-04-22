@@ -2,7 +2,7 @@
 @foreach($genders as $key=>$gender)
     <div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="{{$name}}" id="gender-{{$loop->index}}"
-               value="{{$key}}" @checked(old($name,$current))>
+               value="{{$key}}" @checked($key==$checked)>
         <label class="form-check-label" for="gender-{{$loop->index}}">{{$gender}}</label>
     </div>
 @endforeach
