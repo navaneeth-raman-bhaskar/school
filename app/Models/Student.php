@@ -25,7 +25,7 @@ class Student extends Model
         return $this->belongsTo(Teacher::class);
     }
 
-    public function examinations(): HasMany
+    public function markLists(): HasMany
     {
         return $this->hasMany(Examination::class);
     }
