@@ -25,16 +25,16 @@ class MarkListController
     }
 
 
-    public function update(UpdateMarkListRequest $request, Student $student)
+    public function update(UpdateMarkListRequest $request, MarkListService $service, Student $student)
     {
-
+        $service->update($request);
         return redirect()->route('marklist.index');
     }
 
 
-    public function destroy(Student $student)
+    public function destroy(Student $student, $term)
     {
-        $student->markLists()->delete();
+        $student->markLists()->where('term_id', $term)->delete();
         return response()->json();
     }
 

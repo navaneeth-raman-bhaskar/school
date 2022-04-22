@@ -32,5 +32,5 @@ Route::controller(MarkListController::class)->name('marklist.')->prefix('marklis
     Route::get('/', 'index')->name('index');
     Route::get('{student}/edit', 'edit')->name('edit');
     Route::put('{student}', 'update')->name('update');
-    Route::delete('{student}', 'destroy')->name('destroy');
+    Route::delete('{student}/{term}', 'destroy')->name('destroy');
 });
