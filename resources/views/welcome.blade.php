@@ -21,15 +21,11 @@
         </style>
     </head>
     <body class="antialiased">
+    <h2> Student Management System <small>Click Below</small></h2>
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <a class="sm:block mt-4 dark:text-white" href="{{route('teachers.index')}}">Teachers</a>
-                <a class="sm:block mt-4 dark:text-white" href="{{route('students.index')}}">Students</a>
-                <a class="sm:block mt-4 dark:text-white" href="{{route('subjects.index')}}">Subjects</a>
-                <a class="sm:block mt-4 dark:text-white" href="{{route('terms.index')}}">Terms</a>
-                <a class="sm:block mt-4 dark:text-white" href="{{route('examinations.index')}}">Mark Entry</a>
-                <a class="sm:block mt-4 dark:text-white" href="{{route('marklist.index')}}">Mark List</a>
+               @include('partials.menu')
             </div>
         </div>
     </body>

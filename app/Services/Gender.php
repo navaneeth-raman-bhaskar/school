@@ -10,9 +10,12 @@ class Gender
 {
     public const MALE = 1;
     public const FEMALE = 2;
+    public const NON_BINARY = 3;
+
     private const GENDERS = [
         self::MALE => 'Male',
         self::FEMALE => 'Female',
+        self::NON_BINARY => 'Non Binary',
     ];
 
     public static function name(?int $key): ?string

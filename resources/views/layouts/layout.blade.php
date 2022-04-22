@@ -12,7 +12,12 @@
 </head>
 <body>
 <div class="container">
-    <h3><a href="{{route('home')}}">Home</a></h3>
+    <h3 class="my-4">
+        <a href="{{route('home')}}">&#10096; Home</a>
+        <div class="nav">@include('partials.menu')</div>
+        <a style="float: right" href="{{URL::current()}}">Reload &#10150;</a>
+    </h3>
+
     @yield('content')
 </div>
 </body>

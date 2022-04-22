@@ -26,11 +26,11 @@ class MarkListService
         return compact('subjects', 'students', 'terms');
     }
 
-    public function update(Student $student, UpdateMarkListRequest $request,$term)
+    public function update(Student $student, UpdateMarkListRequest $request, int $term)
     {
         $exams = $request->get('exam');
         foreach ($exams as $examId => $data) {
-            $student->markLists()->whereId($examId)->where('term_id',$term)->update($data);
+            $student->markLists()->whereId($examId)->where('term_id', $term)->update($data);
         }
     }
 }
