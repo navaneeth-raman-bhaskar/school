@@ -2,7 +2,7 @@
 @section('content')
     <h3>Edit Marks Details</h3>
     <div class="container">
-        <form action="{{route('marklist.update',$student)}}" method="POST">
+        <form action="{{route('marklist.update',[$student,$tId])}}" method="POST">
             @csrf
             @method('PUT')
             <div class="row">
@@ -11,7 +11,7 @@
                     <strong>{{$student->name}}</strong>
                 </div>
             </div>
-            @foreach($student->markLists??[] as $examination)
+            @foreach($markLists as $examination)
            <div class="row">
                <div class="col-1">
                   <strong> {{$loop->iteration}}</strong>

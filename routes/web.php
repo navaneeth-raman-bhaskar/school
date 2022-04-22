@@ -30,7 +30,7 @@ Route::resource('terms', TermController::class);
 Route::resource('examinations', ExaminationController::class);
 Route::controller(MarkListController::class)->name('marklist.')->prefix('marklist')->group(function () {
     Route::get('/', 'index')->name('index');
-    Route::get('{student}/edit', 'edit')->name('edit');
-    Route::put('{student}', 'update')->name('update');
+    Route::get('{student}/{term}/edit', 'edit')->name('edit');
+    Route::put('{student}/{term}', 'update')->name('update');
     Route::delete('{student}/{term}', 'destroy')->name('destroy');
 });

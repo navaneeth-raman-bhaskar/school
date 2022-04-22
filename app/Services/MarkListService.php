@@ -5,7 +5,6 @@ namespace App\Services;
 
 
 use App\Http\Requests\UpdateMarkListRequest;
-use App\Models\Examination;
 use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Term;
@@ -27,11 +26,11 @@ class MarkListService
         return compact('subjects', 'students', 'terms');
     }
 
-    public function update(UpdateMarkListRequest $request)
+    public function update(Student $student, UpdateMarkListRequest $request,$term)
     {
         $exams = $request->get('exam');
         foreach ($exams as $examId => $data) {
-            Examination::whereId($examId)->update($data);
+            $student->markLists()->whereId($examId)->where('term_id',$term)->update($data);
         }
     }
 }

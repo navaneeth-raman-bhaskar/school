@@ -34,7 +34,7 @@
                     <td>{{$termExams->sum('mark')}}</td>
                     <td>{{$student->created_at}}</td>
                     <td>
-                        <a href="{{route('marklist.edit',$student)}}" class="btn btn-success">Edit</a>
+                        <a href="{{route('marklist.edit',[$student,$tId])}}" class="btn btn-success">Edit</a>
                         <a class="delete btn btn-danger" href="{{route('marklist.destroy',[$student,$tId])}}">Delete</a>
                     </td>
                 </tr>

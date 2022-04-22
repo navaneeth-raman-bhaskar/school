@@ -18,16 +18,18 @@ class MarkListController
     }
 
 
-    public function edit(Student $student)
+    public function edit(Student $student, $tId)
     {
         $this->setFormData();
-        return view('marklist.edit')->with(compact('student'))->with($this->data);
+        $markLists = $student->markLists()->where('term_id', $tId)->get() ?? [];
+        return view('marklist.edit')->with(compact('student'))
+            ->with($this->data)->with(compact('markLists','tId'));
     }
 
 
-    public function update(UpdateMarkListRequest $request, MarkListService $service, Student $student)
+    public function update(UpdateMarkListRequest $request, MarkListService $service, Student $student, $term)
     {
-        $service->update($request);
+        $service->update($student, $request, $term);
         return redirect()->route('marklist.index');
     }
 
