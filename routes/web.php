@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ExaminationController;
+use App\Http\Controllers\MarkListController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
@@ -19,9 +21,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::resource('teachers', TeacherController::class);
 Route::resource('students', StudentController::class);
 Route::resource('subjects', SubjectController::class);
 Route::resource('terms', TermController::class);
+Route::resource('examinations', ExaminationController::class);
+Route::controller(MarkListController::class)->name('marklist.')->prefix('marklist')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('{student}/edit', 'edit')->name('edit');
+    Route::put('{student}', 'update')->name('update');
+    Route::delete('{student}/{term}', 'destroy')->name('destroy');
+});

@@ -10,7 +10,7 @@
             <th>Name</th>
             <th>Age</th>
             <th>Gender</th>
-            <th>Teacher In-charge</th>
+            <th>Reporting Teacher</th>
             <th>Actions</th>
         </tr>
         </thead>

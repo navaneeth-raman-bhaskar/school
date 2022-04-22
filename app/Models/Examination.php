@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class Examination extends Pivot
 {
+    protected $fillable = [
+        'student_id',
+        'subject_id',
+        'term_id',
+        'mark',
+        'min_mark',
+        'max_mark',
+    ];
+
     public function student(): BelongsTo
     {
         return $this->belongsTo(Student::class);
