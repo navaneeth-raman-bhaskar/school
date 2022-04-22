@@ -20,24 +20,28 @@
         @php $iteration=0; @endphp
         @foreach($data['students'] as $student)
             @foreach($data['terms'] as $tId=>$term)
-                <tr>
-                    <td>{{++$iteration}}</td>
-                    <td>{{$student->name}}</td>
-                    @foreach($data['subjects'] as $sId=>$subject)
-                        @php
-                        $termExams = $student->markLists->where('term_id',$tId);
-                        $exam =   $student->markLists->where('subject_id',$sId)->firstWhere('term_id',$tId);
-                        @endphp
-                    <td>{{$exam?->mark??'--'}}</td>
-                    @endforeach
-                    <td>{{$term}}</td>
-                    <td>{{$termExams->sum('mark')}}</td>
-                    <td>{{$student->created_at}}</td>
-                    <td>
-                        <a href="{{route('marklist.edit',[$student,$tId])}}" class="btn btn-success">Edit</a>
-                        <a class="delete btn btn-danger" href="{{route('marklist.destroy',[$student,$tId])}}">Delete</a>
-                    </td>
-                </tr>
+                @php
+                    $termExams = $student->markLists->where('term_id',$tId);
+                @endphp
+                @if($termExams->isNotEmpty())
+                    <tr>
+                        <td>{{++$iteration}}</td>
+                        <td>{{$student->name}}</td>
+                        @foreach($data['subjects'] as $sId=>$subject)
+                            @php
+                                $exam = $student->markLists->where('subject_id',$sId)->firstWhere('term_id',$tId);
+                            @endphp
+                            <td>{{$exam?->mark??'--'}}</td>
+                        @endforeach
+                        <td>{{$term}}</td>
+                        <td>{{$termExams->sum('mark')}}</td>
+                        <td>{{$student->created_at}}</td>
+                        <td>
+                            <a href="{{route('marklist.edit',[$student,$tId])}}" class="btn btn-success">Edit</a>
+                            <a class="delete btn btn-danger" href="{{route('marklist.destroy',[$student,$tId])}}">Delete</a>
+                        </td>
+                    </tr>
+                @endif
             @endforeach
         @endforeach
         </tbody>
