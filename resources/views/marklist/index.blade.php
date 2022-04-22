@@ -16,7 +16,7 @@
             <th>Actions</th>
         </tr>
         </thead>
-        <tbody class="exams">
+        <tbody class="lists">
         @php $iteration=0; @endphp
         @foreach($data['students'] as $student)
             @foreach($data['terms'] as $tId=>$term)
