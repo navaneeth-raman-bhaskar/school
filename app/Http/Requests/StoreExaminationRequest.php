@@ -2,11 +2,13 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Examination;
 use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Term;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Validator;
 
 class StoreExaminationRequest extends FormRequest
 {
@@ -38,5 +40,23 @@ class StoreExaminationRequest extends FormRequest
             'subject_id' => 'Subject',
             'term_id' => 'Term',
         ];
+    }
+
+    public function withValidator(Validator $validator)
+    {
+        $validator->after(
+            function ($validator) {
+                if (!$validator->errors()->isEmpty()) {
+                    return;
+                }
+                $exists = Examination::where('id', '!=', $this->route('examination'))
+                    ->whereStudentIdAndSubjectIdAndTermId($this->student_id, $this->subject_id, $this->term_id)->exists();
+                if ($exists) {
+                    $validator->errors()->add(
+                        'student_id',
+                        'Student Has already attempted this examination'
+                    );
+                }
+            });
     }
 }
