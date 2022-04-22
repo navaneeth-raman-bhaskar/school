@@ -33,9 +33,9 @@ class UpdateMarkListRequest extends FormRequest
     public function attributes(): array
     {
         return [
+            'exam.*.mark' => 'Mark',
             'exam.*.min_mark' => 'Min Mark',
             'exam.*.max_mark' => 'Max Mark',
-            'exam.*.student_id' => 'Student',
             'exam.*.subject_id' => 'Subject',
             'exam.*.term_id' => 'Term',
         ];
